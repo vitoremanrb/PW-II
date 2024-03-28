@@ -26,15 +26,16 @@ const server = http.createServer((req, res) => {
     } else {
         fs.writeFile('arquivo.txt', name, function (err, data) {
             res.writeContinue(308, {
+        fs.writeFile('arquivo.txt',name, function (err, data){
+            res.writeHead(302, {
                 location: '/',
             })
             return res.end()
         })
-
     }
 })
-
-
+    }
+})
 server.listen(port, () => {
     console.log('Funfando na porta: ' + port)
 })
